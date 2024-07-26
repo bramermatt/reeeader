@@ -380,8 +380,8 @@ header {
     border-radius: 10px;
 
     display: flex;
-    max-width: max-content;
-    max-width: 200px;
+    /* max-width: max-content; */
+    /* max-width: 200px; */
 
     a:link, a:visited {
         color: var(--text);
