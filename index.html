@@ -55,6 +55,23 @@
                     <a href="">Coming Soon*</a>
                 </div>
             </li>
+
+
+        </ul>
+
+        <ul id="search">
+            <li>
+                <!-- <label for="">Search</label> -->
+                <input type="search" name="" id="searchInput" placeholder="Search">
+            </li>
+
+            <script>
+            document.addEventListener('DOMContentLoaded', function() {
+            // Ensure no element has focus by default
+            document.activeElement.blur();
+            document.getElementById('searchInput').focus(); // Remove or comment out this line if it exists
+        });
+            </script>
         </ul>
 
         <!-- <ul id="currently">
@@ -71,6 +88,7 @@
                 </a>
                 <div class="dropdown-content">
                     <a href="">Your Profile</a>
+                    <a href="">Sign Out</a>
                 </div>
             </li>
 
