@@ -59,25 +59,58 @@
 
         </ul>
 
-        <ul id="search">
+        <!-- <ul id="search">
             <li>
-                <!-- <label for="">Search</label> -->
-                <input type="search" name="" id="searchInput" placeholder="Search">
+                <li>
+                    <i class="fa fa-search search-icon" id="searchIcon"></i>
+                </li>
+                <li>
+                    <input type="search" name="" id="searchInput" placeholder="Search books.." class="search-box hidden">
+                </li>
             </li>
+        </ul> -->
 
-            <script>
-            document.addEventListener('DOMContentLoaded', function() {
-            // Ensure no element has focus by default
-            document.activeElement.blur();
-        });
-            </script>
-        </ul>
+        <script src="js/menuSearch.js"></script>
 
         <!-- <ul id="currently">
             <li><a href="">Currently Reading</a></li>
         </ul> -->
 
         <ul id="menuProfile">
+
+
+
+            <ul id="search">
+                <li>
+                    <li>
+                        <input type="search" name="" id="searchInput" placeholder="Search books.." class="search-box hidden">
+                    </li>
+
+                    <li>
+                        <i class="fa fa-search search-icon" id="searchIcon"></i>
+                    </li>
+
+                </li>
+
+            </ul>
+
+            <!-- <ul id="searchResults" class="hidden"></ul> -->
+
+            <!-- <li class="dropdown" id="search">
+                <a href="javascript:void(0)" class="dropdown-toggle">
+                    <i class="fa fa-search" id="searchIcon"></i>
+                </a>
+                <div class="dropdown-content">
+                    <input type="search" id="searchInput" placeholder="Search books.." class="search-box">
+                </div>
+            </li> -->
+
+
+
+            <ul id="addBook">
+                <li><a href=""><i class="fa-solid fa-plus"></i></a></li>
+            </ul>
+
 
 
             <li class="dropdown" id="profile">
@@ -100,17 +133,29 @@
 
     <div id="sideMenu">
         <!-- <a href="javascript:void(0)" class="closeBtn" onclick="closeNav()">&times;</a> -->
-        <a href="#">Home</a>
-        <a href="#">Stats</a>
-        <a href="#">Challenges</a>
-        <a href="#">Giveaways</a>
-        <a href="#">Search</a>
-        <a href="#">Your Books</a>
-        <a href="#">Your Lists</a>
+         <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Stats</a></li>
+            <li><a href="#">Challenges</a></li>
+            <li><a href="#">Giveaways</a></li>
+            <li><a href="#">Your Books</a></li>
+            <li><a href="#">Your Lists</a></li>
+            <li><a href="#">Your Profile</a></li>
+         </ul>
+
+
     </div>
 
     <script src="js/mobile-menu.js"></script>
 
+    <!-- <ul id="searchResults" class="hidden"></ul> -->
+
+    <!-- <div id="searchModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="searchResults"></div>
+        </div>
+    </div> -->
 
     <header>
 
