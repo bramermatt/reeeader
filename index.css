@@ -25,7 +25,7 @@ html {
 nav, .footer-links {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     gap: 1vw;
     
     padding: 15px;
@@ -40,7 +40,7 @@ nav, .footer-links {
     /* z-index: 1000; */
 
     ul {
-        width: 100%;
+        max-width: 100%;
         display: flex;
         align-items: center;
         justify-content: space-evenly;
@@ -285,7 +285,7 @@ footer {
 
 
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 1050px) {
     nav {
         ul {
             gap: 4vw !important;
@@ -305,7 +305,7 @@ footer {
     } 
 
     .dropdown-content {
-        width: 100%; /* Full width on mobile */
+        /* width: 100%;  */
     }
 
     #sideMenu.open {
