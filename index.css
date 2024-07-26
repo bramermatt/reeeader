@@ -346,8 +346,45 @@ header {
             margin-top: 5px;
             line-height: 1.6;
         }
+
+
+    }
+
+    .hero-title-right {
+        position: absolute;
+        /* top: 10vh; */
+        right: 0;
+        z-index: 1;
+        padding: 25px;
+        padding-left: 40px;
+        max-width: 600px;
+        border-radius: 0 25px 25px 0;
+        margin-top: 25px;
+        margin-bottom: 20vh;
+        line-height: 1.3;
+
+        h1 {
+            margin: 0;
+            line-height: 1.1;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        h2 i {
+            font-size: 8vh;
+        }
+
+        p {
+            margin: 0;
+            margin-top: 5px;
+            line-height: 1.6;
+        }
     }
 }
+
+
 
 .grid-slider {
     max-width: 1000px;
@@ -361,12 +398,22 @@ header {
 
         border-bottom: thin dashed;
     }
+
+    h1 {
+        margin-bottom: 0;
+    }
+
+    p {
+        margin-top: 5px;
+    }
 }
 
 .grid-four {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     /* max-width: 1600px; */
+    width: 100%;
+
     margin: 0 auto;
     /* padding: 12px; */
     gap: 1vw;
@@ -379,7 +426,9 @@ header {
     padding: 12px;
     border-radius: 10px;
 
-    display: flex;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
     /* max-width: max-content; */
     /* max-width: 200px; */
 
@@ -399,11 +448,12 @@ header {
 
     img {
         /* margin-bottom: 10px; */
-        width: 100%;
+        max-width: 100%;
         border-radius: 10px;
         max-height: 35vh;
-        object-fit: contain;
+        /* object-fit: contain; */
         box-shadow: 2px 2px 2px black;
+        display: block;
     }
 
     h2 {
@@ -438,7 +488,7 @@ footer {
 
 
 
-@media screen and (max-width: 1050px) {
+@media screen and (max-width: 850px) {
     nav {
         ul {
             gap: 4vw !important;
