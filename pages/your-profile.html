@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="color-scheme" content="light dark"/>
+
+    <link rel="shortcut icon" type="image/x-icon" href="book-open-reader-solid.svg"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- google font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather">
+
+    <link rel="stylesheet" href="../index.css">
+
+    <title>Your Profile | Reeeader</title>
+
+
+</head>
+<body>
+
+    <nav>
+        <ul id="iconLinks">
+            <a href="../index.html"><i class="fa-solid fa-book-open-reader"></i></a>
+            <h1>Reeeader</h1>
+
+            <li><a href="../index.html">Home</a></li>
+
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropdown-toggle">
+                    <span>Trending</span>
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="">Books*</a>
+                    <a href="">Authors*</a>
+                    <a href="">Series*</a>
+                    <a href="">Genres*</a>
+                </div>
+            </li>
+
+
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropdown-toggle">
+                    <span>Challenges</span>
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="">Coming Soon*</a>
+                </div>
+            </li>
+
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropdown-toggle">
+                    <span>Giveaways</span>
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="">Coming Soon*</a>
+                </div>
+            </li>
+
+
+        </ul>
+
+        <!-- <ul id="search">
+            <li>
+                <li>
+                    <i class="fa fa-search search-icon" id="searchIcon"></i>
+                </li>
+                <li>
+                    <input type="search" name="" id="searchInput" placeholder="Search books.." class="search-box hidden">
+                </li>
+            </li>
+        </ul> -->
+
+        <script src="js/menuSearch.js"></script>
+
+        <!-- <ul id="currently">
+            <li><a href="">Currently Reading</a></li>
+        </ul> -->
+
+        <ul id="menuProfile">
+
+
+
+            <ul id="search">
+                <li>
+                    <li>
+                        <input type="search" name="" id="searchInput" placeholder="Search.." class="search-box hidden">
+                    </li>
+
+                    <li>
+                        <i class="fa fa-search search-icon" id="searchIcon"></i>
+                    </li>
+
+                </li>
+
+            </ul>
+
+            <!-- <ul id="searchResults" class="hidden"></ul> -->
+
+            <!-- <li class="dropdown" id="search">
+                <a href="javascript:void(0)" class="dropdown-toggle">
+                    <i class="fa fa-search" id="searchIcon"></i>
+                </a>
+                <div class="dropdown-content">
+                    <input type="search" id="searchInput" placeholder="Search books.." class="search-box">
+                </div>
+            </li> -->
+
+
+
+            <ul id="addBook">
+                <li><a href=""><i class="fa-solid fa-plus"></i></a></li>
+            </ul>
+
+
+
+            <li class="dropdown" id="profile">
+                <a href="javascript:void(0)" class="dropdown-toggle">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="">Your Books</a>
+                    <a href="">Your Lists</a>
+                    <a href="">Your Stats</a>
+                    <a href="pages/your-profile.html">Your Profile</a>
+                    <a href="">Sign Out</a>
+                </div>
+            </li>
+
+            <a href="javascript:void(0)" onclick="toggleNav()"><i id="menuIcon" class="fa-solid fa-bars"></i></a>
+        </ul>
+        </ul>
+
+    </nav>
+
+    <div id="sideMenu">
+        <!-- <a href="javascript:void(0)" class="closeBtn" onclick="closeNav()">&times;</a> -->
+         <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="#">Stats</a></li>
+            <li><a href="#">Challenges</a></li>
+            <li><a href="#">Giveaways</a></li>
+            <li><a href="#">Your Books</a></li>
+            <li><a href="#">Your Lists</a></li>
+            <li><a href="#">Your Profile</a></li>
+         </ul>
+
+
+    </div>
+
+    <script src="js/mobile-menu.js"></script>
+
+    <!-- <ul id="searchResults" class="hidden"></ul> -->
+
+    <!-- <div id="searchModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="searchResults"></div>
+        </div>
+    </div> -->
+
+    <header>
+
+        <div class="hero-title">
+            <h2><i class="fa-solid fa-book-open-reader"></i></h2>
+            <h1>Your Profile</h1>
+            <!-- <p>Break Free from the Goodreads' Grasp. Reclaim Your Reading Experience with Your Independent Digital Bookshelf!</p> -->
+        </div>
+
+        <!-- <img src="bookshelf-hero.jpg" alt=""> -->
+
+    </header>
+
+    <main>
+
+        <div class="grid-slider">
+            <h1>Popular Books</h1>
+            <p>According to <a href="https://www.nytimes.com/books/best-sellers/" target="_blank" rel="noopener noreferrer">NYTimes Best Sellers for Aug 4, 2024</a>.</p>
+
+            <div class="grid-four">
+
+                <div class="grid-item">
+                    <a href="https://www.amazon.com/dp/0593724771?tag=thenewyorktim-20" target="_blank" rel="noopener noreferrer">
+                    <img src="promo/the-black-bird-oracle-deborahharkness-fiction.jpg" alt="">
+                    <h2>The Black Bird Oracle</h2>
+                    </a>
+                </div>
+
+                <div class="grid-item">
+                    
+                </div>
+
+                <div class="grid-item">
+                    
+                </div>
+
+                <div class="grid-item">
+                    
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="grid-slider">
+            <h1>Popular Authors</h1>
+            <p>According to <a href="https://www.goodreads.com/book/popular_by_date/2024" target="_blank" rel="noopener noreferrer">Most popular books published in 2024 by Goodreads</a>.</p>
+
+            <div class="grid-four">
+
+                <div class="grid-item">
+                    <a href="https://www.goodreads.com/author/show/13905555.Emily_Henry" target="_blank">
+                        <img src="promo/emily-henry-author.jpg" alt="">
+                        <h2>Emily Henry</h2>
+                    </a>
+                </div>
+
+                <div class="grid-item">
+                    <a href="https://www.goodreads.com/author/show/3389.Stephen_King" target="_blank">
+                        <img src="promo/stephen-king-author.jpg" alt="">
+                        <h2>Stephen King</h2>
+                    </a>
+                    
+                </div>
+
+                <div class="grid-item">
+                    
+                </div>
+
+                <div class="grid-item">
+                   
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="grid-slider">
+            <h1>Popular Series</h1>
+            <p>According to <a href="https://www.rd.com/list/best-book-series/" target="_blank" rel="noopener noreferrer">42 Best Book Series for Anyone Who Loves a Good Binge Read by Readers Digest</a>.</p>
+
+            <div class="grid-four">
+
+                <div class="grid-item">
+                    <a href="https://www.amazon.com/Fifth-Season-Broken-Earth/dp/0316229296/?tag=readerwp-20&asc_refurl=https://www.rd.com/list/best-book-series/&asc_source=https://duckduckgo.com/" target="_blank">
+                    <img src="promo/the-fifth-season-nkjemesin.jpg" alt="">
+                    <h2>The Fifth Season</h2>
+                    </a>
+                </div>
+
+                <div class="grid-item">
+                    
+                </div>
+
+                <div class="grid-item">
+                    
+                </div>
+
+                <div class="grid-item">
+                    
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- <div class="grid-slider">
+            <h1>Your Recommendations</h1>
+
+            <div class="grid-four">
+
+                <div class="grid-item">
+                    <h1>One</h1>
+                </div>
+
+                <div class="grid-item">
+                    <h1>Two</h1>
+                </div>
+
+                <div class="grid-item">
+                    <h1>Three</h1>
+                </div>
+
+                <div class="grid-item">
+                    <h1>Four</h1>
+                </div>
+
+            </div>
+            
+        </div> -->
+
+
+
+    </main>
+
+    <footer>
+
+        <div class="footer-links">
+            <ul id="iconLinks">
+                <!-- <li><a href="">Home</a></li> -->
+                <li><a href="">Stats</a></li>
+                <li><a href="">Challenges</a></li>
+                <li><a href="">Giveaways</a></li>
+            </ul>
+
+            <ul id="menuProfile">
+                <li><a href="">Your Books</a></li>
+                <li><a href="">Your Lists</a></li>
+                <li><a href="">Your Profile</a></li>
+                
+            </ul>
+        </div>
+
+
+
+        <img src="reeeader-footer-man.png" alt="">
+    </footer>
+    
+</body>
+</html>
