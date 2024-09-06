@@ -488,6 +488,15 @@ footer {
 }
 
 
+/* .dropdown-content {
+    display: none;
+  }
+  .dropdown-content.show {
+    display: block;
+  } */
+  
+
+
 
 @media screen and (max-width: 850px) {
     nav {

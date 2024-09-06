@@ -52,6 +52,10 @@ Building my own replacement for Goodreads / Storygraph / Book List Apps.
 
 ### profile page
 - profile picture
+- username
+
+*soon*
+- activity
 
 
 ### libraries page

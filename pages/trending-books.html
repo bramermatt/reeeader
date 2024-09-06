@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Books</title>
+
+    <link rel="stylesheet" href="../index.css">
+
+    <meta name="color-scheme" content="light dark"/>
+
+    <link rel="shortcut icon" type="image/x-icon" href="../book-open-reader-solid.svg"> 
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- google font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather">
+
+
+    
+    <!-- <script defer src="../js/navbarSidebar.js"></script> -->
+</head>
+<body>
+    <!-- Navbar and Sidebar will be injected here by navbarSidebar.js -->
+
+    <header>
+
+        <div class="hero-title">
+            <h2><i class="fa-solid fa-book-open-reader"></i></h2>
+            <h1>Trending Books</h1>
+            
+
+            
+            <!-- <a href="pages/testingSearch.html"><i class="fas fa-star"></i></a> -->
+
+            
+        </div>
+
+        <!-- <img src="bookshelf-hero.jpg" alt=""> -->
+
+    </header>
+
+    <div class="main-content">
+        <h1>Books</h1>
+        <div id="books-list">
+            <!-- Book content dynamically inserted here -->
+        </div>
+    </div>
+
+    <!-- Footer will be injected here by navbarSidebar.js -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const userID = getUserID();  // Function to get the current user's ID (defined below)
+            loadBooks(userID);  // Load the books for the user
+        });
+
+        function getUserID() {
+            // Placeholder for retrieving userID (from session, cookies, etc.)
+            return 'user123';  // For now, use a dummy userID
+        }
+
+        function loadBooks(userID) {
+            const booksList = document.getElementById('books-list');
+            // Simulate an API call to get books for the user
+            const books = [
+                { title: 'Book 1', author: 'Author A' },
+                { title: 'Book 2', author: 'Author B' },
+                // More books
+            ];
+
+            books.forEach(book => {
+                const bookElement = document.createElement('div');
+                bookElement.classList.add('book');
+                bookElement.innerHTML = `<h2>${book.title}</h2><p>by ${book.author}</p>`;
+                booksList.appendChild(bookElement);
+            });
+        }
+    </script>
+
+<script src="../js/menuSearch.js"></script>
+<script src="../js/mobile-menu.js"></script>
+<script src="../js/navbarSidebarFooter.js"></script>
+</body>
+</html>
