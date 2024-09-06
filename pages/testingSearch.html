@@ -16,23 +16,41 @@
 
     <style>
 
+        html {
+            margin: 0;
+            padding: 0;
+
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            }
+        }
+
         #bookSearchForm {
-            position: fixed;
-            bottom: 0;
-            right: 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            /* bottom: 0; */
+            /* right: 0; */
             padding: 10px;
             background-color: rgb(255,255,255);
-            width: 95%;
+            /* width: 95%; */
             max-width: 550px;
             font-size: 24px;
 
             input {
+                position: sticky;
+                top: 10px;
+                z-index: 10;
                 padding: 10px;
                 max-width: 100%;
                 border-radius: 8px;
                 border: thin solid;
-                max-width: 100%;
+                /* max-width: 100%; */
                 font-size: 24px;
+                /* margin-left: -2vw; */
+                /* width: 90%; */
             }
 
             button {
@@ -44,17 +62,13 @@
         }
 
         #autocompleteResults {
-            margin-top: 2vh;
-            margin-bottom: 2vh;
-
+            /* margin-top: 2vh; */
+            /* margin-bottom: 2vh; */
+            padding-top: 2vh;
         }
 
         .autocomplete-item {
-            box-shadow: 0px 0px 3px black;
-            padding: 5px;
-            margin-bottom: 1vh;
 
-            cursor: pointer;
 
 
         }
@@ -81,6 +95,107 @@
             }
         }
 
+.autocomplete-item {
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  box-shadow: 0px 0px 1px black;
+    margin-bottom: 1vh;
+
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.suggestion-content {
+  display: flex;
+  gap: 2vw;
+  align-items: center;
+}
+
+.suggestion-cover {
+  /* width: 40px; */
+  /* height: 60px; */
+  margin-right: 10px;
+}
+
+.suggestion-details {
+  display: inline-block;
+}
+
+.book-details {
+  /* margin-top: 20px; */
+  margin-bottom: 5vh;
+  padding: 12px;
+}
+
+.book-details img {
+  width: 150px;
+  height: 220px;
+}
+
+.book-buttons {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    gap: 2vw;
+    align-items: center;
+    justify-content: center;
+    max-width: 100vw;
+
+    background-color: white;
+  margin: 0;
+  padding: 1vh 0px;
+
+    button {
+        font-size: 16px;
+    }
+}
+
+/* 
+        #autocompleteResults {
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: #fff;
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
+}
+
+.autocomplete-item {
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.suggestion-content {
+  display: flex;
+  align-items: center;
+}
+
+.suggestion-cover {
+  width: 40px;
+  height: 60px;
+  margin-right: 10px;
+}
+
+.suggestion-details {
+  display: inline-block;
+}
+
+.book-details {
+  margin-top: 20px;
+}
+
+.book-details img {
+  width: 150px;
+  height: 220px;
+} */
+
+
     </style>
 
     <main style="max-width: 1400px; margin: 0 auto;">
@@ -98,6 +213,10 @@
 const bookSearchInput = document.getElementById('bookSearchInput');
 const autocompleteResults = document.getElementById('autocompleteResults');
 const bookResults = document.getElementById('bookResults');
+
+function goBack() {
+  window.history.back(); // or window.history.go(-1)
+}
 
 // Add event listener for input changes (autocomplete)
 bookSearchInput.addEventListener('input', function() {
@@ -122,52 +241,77 @@ function displayAutocompleteResults(books) {
   autocompleteResults.innerHTML = ''; // Clear previous results
   books.forEach(book => {
     const title = book.volumeInfo.title || 'No title available';
+    const authors = book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Unknown author';
+    const thumbnail = book.volumeInfo.imageLinks?.thumbnail || '';
+    const releaseDate = book.volumeInfo.publishedDate || 'No date available';
+
     const suggestionItem = document.createElement('div');
     suggestionItem.classList.add('autocomplete-item');
-    suggestionItem.textContent = title;
+    suggestionItem.innerHTML = `
+      <div class="suggestion-content">
+        <img src="${thumbnail}" alt="Book cover" class="suggestion-cover">
+        <div class="suggestion-details">
+          <p><strong>${title}</strong></p>
+          <p>Author: ${authors}</p>
+          <p>Release Date: ${releaseDate}</p>
+        </div>
+      </div>
+    `;
     suggestionItem.addEventListener('click', () => {
-      bookSearchInput.value = title; // Fill the input with selected suggestion
+      openBookPage(book); // Open the book info page
       autocompleteResults.innerHTML = ''; // Clear autocomplete suggestions
-      searchBooks(title); // Trigger full search on selection
     });
     autocompleteResults.appendChild(suggestionItem);
   });
+
+  function openBookPage(book) {
+  const bookInfo = book.volumeInfo;
+  const title = bookInfo.title || 'No title available';
+  const authors = bookInfo.authors ? bookInfo.authors.join(', ') : 'Unknown author';
+  const description = bookInfo.description || 'No description available';
+  const releaseDate = bookInfo.publishedDate || 'No date available';
+  const thumbnail = bookInfo.imageLinks?.thumbnail || '';
+
+  bookResults.innerHTML = `
+    <div class="book-details">
+
+      <img src="${thumbnail}" alt="Book cover">
+      <h2>${title}</h2>
+      <p><strong>Author:</strong> ${authors}</p>
+      <p><strong>Release Date:</strong> ${releaseDate}</p>
+      <p><strong>Description:</strong> ${description}</p>
+
+        <div class="book-buttons">
+            <button onclick="goBack()">← Back</button>
+            <button onclick="addToList('${book.id}', 'currentlyReading')">Add to Currently Reading</button>
+            <button onclick="addToList('${book.id}', 'toRead')">Add to To-Read List</button>
+        </div>
+    </div>
+  `;
 }
 
-// Full book search triggered by the form submission or selecting a suggestion
-bookSearchForm.addEventListener('submit', function(event) {
-  event.preventDefault();
-  const query = bookSearchInput.value;
-  searchBooks(query);
-});
 
-function searchBooks(query) {
-  fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=${apiKey}`)
-    .then(response => response.json())
-    .then(data => displayBooks(data.items))
-    .catch(error => console.error('Error fetching books:', error));
+function addToList(bookId, listType) {
+  let bookLists = JSON.parse(localStorage.getItem('bookLists')) || { currentlyReading: [], toRead: [] };
+  
+  // Prevent duplicates
+  if (!bookLists[listType].includes(bookId)) {
+    bookLists[listType].push(bookId);
+    localStorage.setItem('bookLists', JSON.stringify(bookLists));
+    alert(`Book added to ${listType.replace(/([A-Z])/g, ' $1').toLowerCase()}!`);
+  } else {
+    alert('Book already in list!');
+  }
 }
 
-// Display full search results (unchanged from original)
-function displayBooks(books) {
-  bookResults.innerHTML = '';
-  books.forEach(book => {
-    const title = book.volumeInfo.title || 'No title available';
-    const authors = book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Unknown author';
-    const description = book.volumeInfo.description || 'No description available';
-    const thumbnail = book.volumeInfo.imageLinks?.thumbnail || '';
 
-    const bookElement = `
-      <div class="book">
-        <img src="${thumbnail}" alt="Book cover">
-        <h3>${title}</h3>
-        <p><strong>Authors:</strong> ${authors}</p>
-        <p>${description}</p>
-      </div>
-    `;
-    bookResults.innerHTML += bookElement;
-  });
+
+
+
 }
+
+// CSS can be added to make the autocomplete dropdown visually appealing
+
 
 
     </script>
