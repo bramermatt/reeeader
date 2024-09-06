@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <title>Testing Search</title>
+
+
+
+</head>
+<body>
+
+    <style>
+
+        #bookSearchForm {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            padding: 10px;
+            background-color: rgb(255,255,255);
+            width: 95%;
+            max-width: 550px;
+            font-size: 24px;
+
+            input {
+                padding: 10px;
+                max-width: 100%;
+                border-radius: 8px;
+                border: thin solid;
+                max-width: 100%;
+                font-size: 24px;
+            }
+
+            button {
+                padding: 10px;
+                border-radius: 8px;
+                cursor: pointer;
+                font-size: 24px;
+            }
+        }
+
+        #autocompleteResults {
+            margin-top: 2vh;
+            margin-bottom: 2vh;
+
+        }
+
+        .autocomplete-item {
+            box-shadow: 0px 0px 3px black;
+            padding: 5px;
+            margin-bottom: 1vh;
+
+            cursor: pointer;
+
+
+        }
+
+        .autocomplete-item:hover {
+                opacity: 80%;
+            }
+
+        #bookResults {
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        .book {
+            box-shadow: 0px 0px 2px grey;   
+            padding: 10px;
+            border-radius: 10px;
+            border: thin solid grey;
+            margin-bottom: 2vh;
+
+            img {
+                border: thin solid grey;
+                max-height: 20vh;
+            }
+        }
+
+    </style>
+
+    <main style="max-width: 1400px; margin: 0 auto;">
+        <form id="bookSearchForm" autocomplete="off">
+        <input type="text" id="bookSearchInput" placeholder="Search for a book..." required>
+        <div id="autocompleteResults"></div>
+        </form>
+        <div id="bookResults"></div>
+
+          
+    </main>
+
+    <script>
+        const apiKey = 'AIzaSyB_P5StDPs-PRIKi7B2Os1NHaXNX5krmuE';
+const bookSearchInput = document.getElementById('bookSearchInput');
+const autocompleteResults = document.getElementById('autocompleteResults');
+const bookResults = document.getElementById('bookResults');
+
+// Add event listener for input changes (autocomplete)
+bookSearchInput.addEventListener('input', function() {
+  const query = bookSearchInput.value;
+  if (query.length > 2) {
+    autocompleteBooks(query);
+  } else {
+    autocompleteResults.innerHTML = ''; // Clear suggestions if input is too short
+  }
+});
+
+// Function to fetch autocomplete results
+function autocompleteBooks(query) {
+  fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=${apiKey}&maxResults=5`)
+    .then(response => response.json())
+    .then(data => displayAutocompleteResults(data.items))
+    .catch(error => console.error('Error fetching autocomplete results:', error));
+}
+
+// Function to display autocomplete suggestions
+function displayAutocompleteResults(books) {
+  autocompleteResults.innerHTML = ''; // Clear previous results
+  books.forEach(book => {
+    const title = book.volumeInfo.title || 'No title available';
+    const suggestionItem = document.createElement('div');
+    suggestionItem.classList.add('autocomplete-item');
+    suggestionItem.textContent = title;
+    suggestionItem.addEventListener('click', () => {
+      bookSearchInput.value = title; // Fill the input with selected suggestion
+      autocompleteResults.innerHTML = ''; // Clear autocomplete suggestions
+      searchBooks(title); // Trigger full search on selection
+    });
+    autocompleteResults.appendChild(suggestionItem);
+  });
+}
+
+// Full book search triggered by the form submission or selecting a suggestion
+bookSearchForm.addEventListener('submit', function(event) {
+  event.preventDefault();
+  const query = bookSearchInput.value;
+  searchBooks(query);
+});
+
+function searchBooks(query) {
+  fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=${apiKey}`)
+    .then(response => response.json())
+    .then(data => displayBooks(data.items))
+    .catch(error => console.error('Error fetching books:', error));
+}
+
+// Display full search results (unchanged from original)
+function displayBooks(books) {
+  bookResults.innerHTML = '';
+  books.forEach(book => {
+    const title = book.volumeInfo.title || 'No title available';
+    const authors = book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Unknown author';
+    const description = book.volumeInfo.description || 'No description available';
+    const thumbnail = book.volumeInfo.imageLinks?.thumbnail || '';
+
+    const bookElement = `
+      <div class="book">
+        <img src="${thumbnail}" alt="Book cover">
+        <h3>${title}</h3>
+        <p><strong>Authors:</strong> ${authors}</p>
+        <p>${description}</p>
+      </div>
+    `;
+    bookResults.innerHTML += bookElement;
+  });
+}
+
+
+    </script>
+    
+</body>
+</html>
