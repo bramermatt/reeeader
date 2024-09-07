@@ -75,6 +75,7 @@ nav, .footer-links {
 
 .footer-links {
     z-index: 0;
+    flex-wrap: wrap;
 }
 
 #iconLinks {
@@ -243,6 +244,7 @@ nav, .footer-links {
 
 #sideMenu {
     height: 98%;
+    /* max-height: max-content; */
     width: 0;
     position: fixed;
     z-index: 1;
@@ -252,7 +254,7 @@ nav, .footer-links {
     box-shadow: -4px 0px 10px 0px rgb(0, 0, 0);
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 10vh;
+    padding-top: 5vh;
     border-radius: 25px 25px 0px;
 
 
@@ -265,9 +267,9 @@ nav, .footer-links {
 
 
 #sideMenu a {
-    padding: 8px 8px 8px 32px;
+    padding: 16px;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 20px;
     /* color: #818181; */
 
     color: white;
@@ -276,6 +278,7 @@ nav, .footer-links {
 }
 #sideMenu a:hover {
     color: #f1f1f1;
+    opacity: 50%;
 }
 
 /* Position the dropdown content */
@@ -387,7 +390,7 @@ header {
 
 
 
-.grid-slider {
+.grid-slider, #books-list, .main-content {
     max-width: 1000px;
     margin: 0 auto;
     padding: 12px;
@@ -523,13 +526,17 @@ footer {
 
     #sideMenu.open {
         width: 100%;
-        padding-top: 100px; 
+        
         height: 100%;
         border-radius: 0;
+        padding: 20px;
+        padding-top: 6vh; 
     }
     #sideMenu a {
-        font-size: 30px;
+        font-size: 24px;
     }
+
+    
 
     #menuProfile .dropdown-content {
         right: 8vw; 
@@ -654,7 +661,7 @@ footer {
         }
     }
 
-
+/* 
     ::-webkit-scrollbar-thumb {
         border-radius: 10px;
       }
@@ -678,7 +685,7 @@ footer {
     ::-webkit-scrollbar-track {
         background: rgba(100, 55, 25, 0.863);
     }
-
+ */
 
 }
 
@@ -746,7 +753,7 @@ footer {
     }
 
 
-    ::-webkit-scrollbar-thumb {
+    /* ::-webkit-scrollbar-thumb {
         border-radius: 10px;
       }
     
@@ -755,7 +762,6 @@ footer {
         border-radius: 10px;
       }
     
-      /* Firefox */
       * {
         scrollbar-color: rgb(44, 24, 11) rgb(92, 50, 23);
         scrollbar-width: thin;
@@ -770,7 +776,7 @@ footer {
     ::-webkit-scrollbar-track {
         background: rgb(92, 50, 23);
     
-      }
+      } */
 
 
 }
