@@ -301,6 +301,15 @@ nav, .footer-links {
 
 
 
+/* By default, hide the dropdown content */
+.dropdown-content {
+    display: none;
+}
+
+/* When the 'show' class is added, display the dropdown content */
+.dropdown-content.show {
+    display: block;
+}
 
 
 

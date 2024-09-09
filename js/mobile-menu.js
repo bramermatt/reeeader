@@ -2,7 +2,7 @@ function toggleDropdown(element) {
     var dropdownContent = element.closest('.dropdown').querySelector('.dropdown-content');
     dropdownContent.classList.toggle("show");
     element.querySelector('.fa-chevron-down')?.classList.toggle('rotate');
-
+    
     var sideMenu = document.getElementById("sideMenu");
     var menuIcon = document.getElementById("menuIcon");
     var body = document.body;
@@ -16,34 +16,6 @@ function toggleDropdown(element) {
     }
 }
 
-function toggleNav() {
-    var sideMenu = document.getElementById("sideMenu");
-    var menuIcon = document.getElementById("menuIcon");
-    var body = document.body;
-    var dropdownContents = document.querySelectorAll('.dropdown-content');
-
-    if (sideMenu.classList.contains("open")) {
-        sideMenu.classList.remove("open");
-        sideMenu.style.width = "0";
-        menuIcon.className = "fa-solid fa-bars";
-        body.classList.remove("menu-open");
-    } else {
-        sideMenu.classList.add("open");
-        sideMenu.style.width = window.innerWidth <= 768 ? "100%" : "250px";
-        menuIcon.className = "fa-solid fa-times";
-        body.classList.add("menu-open");
-
-        // Hide all dropdown contents
-        dropdownContents.forEach(function(dropdown) {
-            dropdown.classList.remove("show");
-            var chevron = dropdown.previousElementSibling.querySelector('.fa-chevron-down');
-            if (chevron) {
-                chevron.classList.remove('rotate');
-            }
-        });
-    }
-}
-
 document.addEventListener('DOMContentLoaded', function() {
     var dropdownToggles = document.querySelectorAll('.dropdown-toggle');
 
@@ -51,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         toggle.addEventListener('click', function(e) {
             e.preventDefault();
             var currentDropdown = this.closest('.dropdown');
+            var dropdownContent = currentDropdown.querySelector('.dropdown-content');
 
             // Close all other dropdowns
             dropdownToggles.forEach(function(otherToggle) {
@@ -61,19 +34,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
 
-            toggleDropdown(this);
+            // Toggle the current dropdown
+            dropdownContent.classList.toggle('show');
+            this.querySelector('.fa-chevron-down')?.classList.toggle('rotate');
         });
     });
 });
-
-
-// mobile-menu.js
-function toggleNav() {
-    const sideMenu = document.getElementById('sideMenu');
-    if (sideMenu.style.display === 'block') {
-      sideMenu.style.display = 'none';
-    } else {
-      sideMenu.style.display = 'block';
-    }
-  }
-  
