@@ -506,6 +506,81 @@ footer {
   .dropdown-content.show {
     display: block;
   } */
+
+
+  /* General Modal Styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #252525;
+    margin: 5% auto; /* 15% from the top and centered */
+    padding: 1em;
+    border: 1px solid #888;
+    max-width: 800px; /* Could be more or less, depending on screen size */
+
+
+    h2 {
+        margin: 0;
+        margin-bottom: 2vh;
+    }
+
+    form {
+        width: 100%;
+        display: flex;
+        gap: 1vw;
+        justify-content: space-between;        
+    }
+
+    input {
+        font-size: large;
+        padding: .5em;
+        max-width: 100%;
+        width: 100%;
+
+        border: none !important;
+        border-radius: 10px;
+        box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.425);
+    }
+
+    button {
+        font-size: large;
+        padding: .5em;
+        cursor: pointer;
+    }
+}
+
+
+@media screen and (max-width: 700px) {
+    .modal-content {
+        form {
+            flex-direction: column;
+        }
+    }
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
   
 
 
@@ -525,7 +600,7 @@ footer {
         }
     }
 
-    #menuProfile .dropdown, #search li, #addBook li {
+    #menuProfile .dropdown, #search li, #addBook li, #add li {
         display: block !important;
     } 
 
@@ -757,9 +832,9 @@ footer {
         padding-inline: 25px;
     }
 
-    input {
+    /* input {
         background-color: rgba(44, 24, 11, 0.863);
-    }
+    } */
 
 
     /* ::-webkit-scrollbar-thumb {

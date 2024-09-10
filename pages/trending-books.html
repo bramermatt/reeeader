@@ -4,13 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Books</title>
+    <title>Trending Books</title>
 
     <link rel="stylesheet" href="../index.css">
 
     <meta name="color-scheme" content="light dark"/>
 
-    <link rel="shortcut icon" type="image/x-icon" href="../book-open-reader-solid.svg"> 
+    <!-- Light Mode Favicon -->
+    <link id="favicon-light" rel="icon" href="../img/fav/reeeader-fav-lightmode.svg" media="(prefers-color-scheme: light)">
+    <!-- Dark Mode Favicon -->
+    <link id="favicon-dark" rel="icon" href="../img/fav/reeeader-fav-darkmode.svg" media="(prefers-color-scheme: dark)">
+
+
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <!-- google font -->
@@ -26,7 +31,7 @@
     <header>
 
         <div class="hero-title">
-            <h2><i class="fa-solid fa-book-open-reader"></i></h2>
+            <h2><i class="fa-solid fa-person-digging"></i></h2>
             <h1>Trending Books</h1>
             
 
@@ -81,5 +86,6 @@
 <script src="../js/menuSearch.js"></script>
 <script src="../js/mobile-menu.js"></script>
 <script src="../js/navbarSidebarFooter.js"></script>
+<script src="js/favicon-color.js"></script>
 </body>
 </html>

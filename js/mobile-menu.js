@@ -1,42 +1,39 @@
 function toggleDropdown(element) {
+    // Get the dropdown content related to the clicked dropdown toggle
     var dropdownContent = element.closest('.dropdown').querySelector('.dropdown-content');
-    dropdownContent.classList.toggle("show");
-    element.querySelector('.fa-chevron-down')?.classList.toggle('rotate');
     
-    var sideMenu = document.getElementById("sideMenu");
-    var menuIcon = document.getElementById("menuIcon");
-    var body = document.body;
+    // Toggle the 'show' class to either open or close the dropdown content
+    dropdownContent.classList.toggle("show");
 
-    // Hide side menu if it's open
-    if (sideMenu.classList.contains("open")) {
-        sideMenu.classList.remove("open");
-        sideMenu.style.width = "0";
-        menuIcon.className = "fa-solid fa-bars";
-        body.classList.remove("menu-open");
-    }
+    // Toggle the chevron rotation (optional, if using an icon)
+    element.querySelector('.fa-chevron-down')?.classList.toggle('rotate');
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Select all dropdown toggle buttons
     var dropdownToggles = document.querySelectorAll('.dropdown-toggle');
 
+    // Add click event listener to each dropdown toggle button
     dropdownToggles.forEach(function(toggle) {
         toggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            var currentDropdown = this.closest('.dropdown');
-            var dropdownContent = currentDropdown.querySelector('.dropdown-content');
+            e.preventDefault();  // Prevent default behavior (if it's a link)
 
-            // Close all other dropdowns
+            var currentDropdown = this.closest('.dropdown'); // Get the closest dropdown wrapper
+            var dropdownContent = currentDropdown.querySelector('.dropdown-content'); // Get the dropdown content
+            
+            // Close all other dropdowns except the clicked one
             dropdownToggles.forEach(function(otherToggle) {
                 var otherDropdown = otherToggle.closest('.dropdown');
+                
                 if (otherDropdown !== currentDropdown) {
-                    otherDropdown.querySelector('.dropdown-content').classList.remove('show');
-                    otherDropdown.querySelector('.fa-chevron-down')?.classList.remove('rotate');
+                    otherDropdown.querySelector('.dropdown-content').classList.remove('show'); // Close other dropdowns
+                    otherDropdown.querySelector('.fa-chevron-down')?.classList.remove('rotate'); // Reset chevron rotation for other dropdowns
                 }
             });
 
-            // Toggle the current dropdown
+            // Now toggle the dropdown for the clicked one (open/close)
             dropdownContent.classList.toggle('show');
-            this.querySelector('.fa-chevron-down')?.classList.toggle('rotate');
+            this.querySelector('.fa-chevron-down')?.classList.toggle('rotate'); // Toggle chevron rotation
         });
     });
 });
