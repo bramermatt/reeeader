@@ -71,10 +71,16 @@ document.addEventListener("DOMContentLoaded", function() {
               </li>
           </ul>
 
+          <ul  id="profile">
+            <li>
+                <a href="${basePath}pages/your-profile.html"><i class="fa-solid fa-user"></i></a>
+            </li>
+          </ul>
 
-        <li class="dropdown" id="profile">
+
+        <!-- <li class="dropdown" id="profile">
           <a href="javascript:void(0)" class="dropdown-toggle">
-            <i class="fa-solid fa-user"></i>
+            
           </a>
           <div class="dropdown-content">
             <a href="${basePath}pages/your-books.html">Your Books</a>
@@ -83,9 +89,13 @@ document.addEventListener("DOMContentLoaded", function() {
             <a href="${basePath}pages/your-profile.html">Your Profile</a>
             <a href="${basePath}pages/sign-out.html">Sign Out</a>
           </div>
-        </li>
+        </li> -->
+
+
         <a href="javascript:void(0)" onclick="toggleNav()"><i id="menuIcon" class="fa-solid fa-bars"></i></a>
       </ul>
+
+
     </nav>
   `;
 

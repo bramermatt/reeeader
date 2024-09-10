@@ -587,22 +587,48 @@ footer {
 
 @media screen and (max-width: 850px) {
     nav {
+
+        position: fixed;
+        height: max-content;
+        bottom: 0;
+        top: auto;
+
+        box-shadow: 0px -2px 0px rgb(44, 24, 11) !important;
+
+        i {
+            font-size: 5vh !important;
+        }
+
         ul {
-            gap: 4vw !important;
+            /* justify-content: space-around; */
+            gap: 7vw !important;
 
             li, .dropdown {
                 display: none;
+
+                .fa, i {
+                    font-size: 5vh;
+                }
+
             }
 
-
-
-            
         }
     }
 
-    #menuProfile .dropdown, #search li, #addBook li, #add li {
+    footer {
+        padding-bottom: 12vh;
+    }
+
+
+    #menuProfile .dropdown, #search li, #addBook li, #add li, #profile li {
         display: block !important;
     } 
+
+    .modal-content {
+        position: fixed;
+        bottom: 10vh;
+        left: 10%;
+    }
 
     .dropdown-content {
         /* width: 100%;  */
@@ -619,6 +645,7 @@ footer {
     #sideMenu a {
         font-size: 24px;
     }
+
 
     
 
@@ -770,6 +797,19 @@ footer {
         background: rgba(100, 55, 25, 0.863);
     }
  */
+
+ .modal-content {
+
+    h2 {
+        color: white;
+    }
+
+    button {
+        color: black;
+    }
+}
+
+
 
 }
 
