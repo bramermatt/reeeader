@@ -126,8 +126,11 @@ document.addEventListener("DOMContentLoaded", function() {
         <h2>Search Book</h2>
         <form>
           <input type="text" id="searchInput" placeholder="Search for a book..." required>
-          <button type="button" id="searchBtn">Search</button>
+
         </form>
+          <div class="modal-footer">
+          <button type="button" id="searchBtn">Search</button>
+          </div>
     </div>
 </div>
 
@@ -137,11 +140,13 @@ document.addEventListener("DOMContentLoaded", function() {
         <span class="close" id="closeAdd">&times;</span>
         <h2>Add/Update</h2>
             <form id="addBookForm">
-              <!-- <label for="bookTitle">Add/Update:</label> -->
-              <input type="text" id="bookTitle" name="bookTitle" placeholder="Enter update" required>
-
-              <button type="submit" id="addBtn">Update</button>
+              <!-- <label for="bookTitle">Post</label> -->
+              <input type="text" id="bookTitle" name="bookTitle" placeholder="What's New?" required>
             </form>
+
+            <div class="modal-footer">
+              <button type="submit" id="addBtn">Post</button>
+            </div>
     </div>
 </div>`
 
