@@ -135,24 +135,33 @@
             <p>Break Free from the Goodreads' Grasp. Reclaim Your Reading Experience with Your Independent Digital Bookshelf!</p>
 
             
-            <!-- <a href="pages/testingSearch.html"><i class="fas fa-star"></i></a> -->
 
             
         </div>
 
-        <!-- <img src="bookshelf-hero.jpg" alt=""> -->
 
     </header>
 
     <main>
 
         <div class="grid-slider">
-            <h1>Popular Books</h1>
-            <p>According to <a href="https://www.nytimes.com/books/best-sellers/" target="_blank" rel="noopener noreferrer">NYTimes Best Sellers for Aug 4, 2024</a>.</p>
+            <div id="grid-topic">
+                <h1>Popular Books</h1>
+                <p>According to <a href="https://www.nytimes.com/books/best-sellers/" target="_blank" rel="noopener noreferrer">NYTimes Best Sellers list</a>.</p>
+            </div>
 
-            <div class="grid-four">
+              
 
-                <div class="grid-item">
+            <!-- <div class="grid-four"> -->
+
+                <div id="book-list">
+                    <!-- Book items will be injected here -->
+                  </div>
+
+                  
+                  
+
+                <!-- <div class="grid-item">
                     <a href="https://www.amazon.com/dp/0593724771?tag=thenewyorktim-20" target="_blank" rel="noopener noreferrer">
                     <img src="promo/the-black-bird-oracle-deborahharkness-fiction.jpg" alt="">
                     <h2>The Black Bird Oracle</h2>
@@ -169,15 +178,17 @@
 
                 <div class="grid-item">
                     
-                </div>
+                </div> -->
 
-            </div>
+            <!-- </div> -->
 
         </div>
 
         <div class="grid-slider">
-            <h1>Popular Authors</h1>
-            <p>According to <a href="https://www.goodreads.com/book/popular_by_date/2024" target="_blank" rel="noopener noreferrer">Most popular books published in 2024 by Goodreads</a>.</p>
+            <div id="grid-topic">
+                <h1>Popular Authors</h1>
+                <p>According to <a href="https://www.goodreads.com/book/popular_by_date/2024" target="_blank" rel="noopener noreferrer">Most popular books published in 2024 by Goodreads</a>.</p>
+            </div>
 
             <div class="grid-four">
 
@@ -209,9 +220,10 @@
         </div>
 
         <div class="grid-slider">
-            <h1>Popular Series</h1>
-            <p>According to <a href="https://www.rd.com/list/best-book-series/" target="_blank" rel="noopener noreferrer">42 Best Book Series for Anyone Who Loves a Good Binge Read by Readers Digest</a>.</p>
-
+            <div id="grid-topic">
+                <h1>Popular Series</h1>
+                <p>According to <a href="https://www.rd.com/list/best-book-series/" target="_blank" rel="noopener noreferrer">42 Best Book Series for Anyone Who Loves a Good Binge Read by Readers Digest</a>.</p>
+            </div>
             <div class="grid-four">
 
                 <div class="grid-item">
@@ -294,6 +306,9 @@
 
 
 
+
+
+    <script src="js/newYorkTimesAPI.js"></script>
 
     <script src="js/menuSearch.js"></script>
     <script src="js/mobile-menu.js"></script>
