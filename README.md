@@ -21,6 +21,26 @@ Building my own replacement for Goodreads / Storygraph / Book List Apps.
 - sign up for alpha
 
 
+# Profile Page
+- currently reading
+  - book
+    - book cover
+    - book title
+    - book author
+      - linked to author page
+    - book genre
+      - linked tags to more
+    - book series
+      - linked to series page
+  - update bookmark (page # / percent complete)
+  - add margin note (quick update regarding book reading)
+
+- add post
+  - character limit?
+  - photo limit? / photo?
+  - linked tags / links
+
+
 ### low pri
 - challenges
 - giveaways
@@ -48,14 +68,6 @@ Building my own replacement for Goodreads / Storygraph / Book List Apps.
 
 
 <hr>
-
-
-### profile page
-- profile picture
-- username
-
-*soon*
-- activity
 
 
 ### libraries page
