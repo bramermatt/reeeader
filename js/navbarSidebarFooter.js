@@ -1,6 +1,8 @@
   // Get modal elements
   var searchModal = document.getElementById('searchModal');
   var addModal = document.getElementById('addModal');
+  var postModal = document.getElementById('post-modal');
+
   
   // Get the buttons that open the modals
   var searchIcon = document.getElementById('searchIcon');
@@ -134,6 +136,15 @@ document.addEventListener("DOMContentLoaded", function() {
     </div>
 </div>
 
+        <!-- Modal for writing a post -->
+<div id="post-modal" class="modal">
+            <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <textarea id="post-content" placeholder="What's on your mind?"></textarea>
+            <button id="submit-post">Post</button>
+        </div> 
+    </div>
+
 <!-- Add/Update Modal -->
 <div id="addModal" class="modal">
     <div class="modal-content">
@@ -169,14 +180,21 @@ document.addEventListener("DOMContentLoaded", function() {
   </footer>
   `;
 
+  const topButtonHTML = `
+          <span onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-arrow-up"></i></span>
+        `
+
   document.body.insertAdjacentHTML('afterbegin', navbarHTML);
   document.body.insertAdjacentHTML('beforeend', sidebarHTML);
   document.body.insertAdjacentHTML('beforeend', modalsHTML);
   document.body.insertAdjacentHTML('beforeend', footerHTML);
+  document.body.insertAdjacentHTML('beforeend', topButtonHTML);
 
   // Now get the modal elements after inserting the HTML
   var searchModal = document.getElementById('searchModal');
   var addModal = document.getElementById('addModal');
+  var postModal = document.getElementById('post-modal');
+
 
   // Get the buttons that open the modals
   var searchIcon = document.getElementById('searchIcon');
@@ -213,8 +231,11 @@ document.addEventListener("DOMContentLoaded", function() {
           searchModal.style.display = "none";
       } else if (event.target == addModal) {
           addModal.style.display = "none";
+          postModal.style.display = "none";
       }
   }
+
+
 
   // Add event listeners for dropdowns
   const dropdowns = document.querySelectorAll('.dropdown-toggle');
@@ -271,3 +292,24 @@ function toggleNav() {
       body.classList.add("menu-open");
   }
 }
+
+
+  //Get the button:
+  mybutton = document.getElementById("myBtn");
+
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function() {scrollFunction()};
+  
+  function scrollFunction() {
+    if (document.body.scrollTop > 40 || document.documentElement.scrollTop > 40) {
+      myBtn.style.display = "block";
+    } else {
+      myBtn.style.display = "none";
+    }
+  }
+  
+  // When the user clicks on the button, scroll to the top of the document
+  function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
