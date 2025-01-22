@@ -1,4 +1,4 @@
-  // Get modal elements
+// Get modal elements
   var searchModal = document.getElementById('searchModal');
   var addModal = document.getElementById('addModal');
   var postModal = document.getElementById('post-modal');
@@ -16,7 +16,7 @@
 document.addEventListener("DOMContentLoaded", function() {
   // Detect the current URL path and set basePath
   const currentPath = window.location.pathname;
-  const basePath = currentPath.includes("/pages/") ? "../" : "";
+  const basePath = currentPath.includes("/pages/") || currentPath.includes("/js/") ? "../" : "";
 
 
 
@@ -24,16 +24,16 @@ document.addEventListener("DOMContentLoaded", function() {
   const navbarHTML = `
     <nav>
       <ul id="iconLinks">
-        <a href="${basePath}index.html"><i class="fa-solid fa-book-open-reader"></i></a>
+        <a href="${basePath}pages/home.html"><i class="fa-solid fa-book-open-reader"></i></a>
         <h1>Reeeader</h1>
-        <li><a href="${basePath}index.html">Home</a></li>
+        <li><a href="${basePath}pages/home.html">Home</a></li>
         <li class="dropdown">
           <a href="javascript:void(0)" class="dropdown-toggle">
             <span>Trending</span>
             <i class="fas fa-chevron-down"></i>
           </a>
           <div class="dropdown-content">
-            <a href="${basePath}pages/trending-books.html">Trending Books*</a>
+            <a href="${basePath}pages/trending-books.html">Trending Books</a>
             <a href="${basePath}pages/trending-authors.html">Trending Authors*</a>
             <a href="${basePath}pages/trending-series.html">Trending Series*</a>
             <a href="${basePath}pages/trending-genres.html">Trending Genres*</a>
@@ -60,8 +60,12 @@ document.addEventListener("DOMContentLoaded", function() {
       </ul>
 
 
+
+
       <ul id="menuProfile">
-          <ul id="search">
+
+
+           <ul id="search">
               <li>
                   <a href="#" id="searchIcon"><i class="fa fa-search search-icon"></i></a>
               </li>
@@ -73,11 +77,14 @@ document.addEventListener("DOMContentLoaded", function() {
               </li>
           </ul>
 
-          <ul  id="profile">
+            <div id="app"></div>
+            <script type="module" src="${basePath}/js/main.js"></script> 
+
+          <!-- <ul  id="profile">
             <li>
                 <a href="${basePath}pages/your-profile.html"><i class="fa-solid fa-user"></i></a>
             </li>
-          </ul>
+          </ul> -->
 
 
         <!-- <li class="dropdown" id="profile">
@@ -104,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const sidebarHTML = `
     <div id="sideMenu">
       <ul>
-        <li><a href="${basePath}index.html">Home</a></li>
+        <li><a href="${basePath}pages/home.html">Home</a></li>
         <li><a href="${basePath}pages/your-stats.html">Stats*</a></li>
         <li><a href="${basePath}pages/challenges.html">Challenges*</a></li>
         <li><a href="${basePath}pages/giveaways.html">Giveaways*</a></li>
@@ -112,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function() {
         <li><a href="${basePath}pages/your-lists.html">Your Lists</a></li>
         <li><a href="${basePath}pages/your-profile.html">Your Profile</a></li>
 
-        <li><a href="${basePath}pages/trending-books.html">Trending Books*</a></li>
+        <li><a href="${basePath}pages/trending-books.html">Trending Books</a></li>
         <li><a href="${basePath}pages/trending-authors.html">Trending Authors*</a></li>
         <li><a href="${basePath}pages/trending-series.html">Trending Series*</a></li>
         <li><a href="${basePath}pages/trending-genres.html">Trending Genres*</a></li>
@@ -313,3 +320,6 @@ function toggleNav() {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   }
+
+
+
