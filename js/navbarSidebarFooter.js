@@ -182,6 +182,12 @@ document.addEventListener("DOMContentLoaded", function() {
           <li><a href="${basePath}pages/your-profile.html">Your Profile</a></li>
           </ul>
       </div>
+
+      <!-- <div class="hero-title">
+      <h2><i class="fa-solid fa-book-open-reader"></i></h2>
+      <h1>Welcome to Reeeader</h1>
+      <p>Break Free from the Goodreads' Grasp. Reclaim Your Reading Experience with Your Independent Digital Bookshelf!</p>
+      </div> -->
   
       <img src="${basePath}img/reeeader-footer-man.png" alt="">
   </footer>
@@ -294,7 +300,7 @@ function toggleNav() {
       body.classList.remove("menu-open");
   } else {
       sideMenu.classList.add("open");
-      sideMenu.style.width = window.innerWidth <= 768 ? "100%" : "250px";
+      sideMenu.style.width = window.innerWidth <= 768 ? "100%" : "220px";
       menuIcon.className = "fa-solid fa-times";
       body.classList.add("menu-open");
   }
