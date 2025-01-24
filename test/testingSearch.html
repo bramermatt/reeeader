@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Test</title>
+</head>
+<body>
+    <h1>Search Test Page</h1>
+    <input type="text" id="searchInput" placeholder="Search...">
+    <button onclick="searchFunction()">Search</button>
+
+    <div id="result"></div>
+
+    <script>
+        function searchFunction() {
+            var input = document.getElementById('searchInput').value;
+            var result = document.getElementById('result');
+            if (input === "") {
+                result.innerHTML = "Please enter a search term.";
+            } else {
+                fetch(`https://openlibrary.org/search.json?q=${input}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.docs.length > 0) {
+                            var books = data.docs.map(book => {
+                                var coverUrl = book.cover_i ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg` : 'https://via.placeholder.com/128x193.png?text=No+Cover';
+                                var author = book.author_name ? book.author_name.map(name => `<a href="https://openlibrary.org/search/authors?q=${name}" target="_blank">${name}</a>`).join(', ') : 'Unknown author';
+                                var publishDate = book.first_publish_year ? book.first_publish_year : 'Unknown year';
+                                var pageCount = book.number_of_pages_median ? book.number_of_pages_median : 'Unknown page count';
+                                var series = book.series && book.series.length > 0 ? book.series.join(', ') : 'No series information available';
+                                var bookUrl = `bookDetails.html?key=${book.key}`;
+                                return `<li>
+                                            <img src="${coverUrl}" alt="Cover" style="width:128px;height:193px;">
+                                            <div>
+                                                <a href="${bookUrl}" target="_blank">${book.title}</a> by ${author}
+                                                <p>Published: ${publishDate}</p>
+                                                <p>Page Count: ${pageCount}</p>
+                                               <!-- <p>Series: ${series}</p> -->
+                                                <button onclick="addToList('${book.key}')">Add to List</button>
+                                            </div>
+                                        </li>`;
+                            }).join('');
+                            result.innerHTML = `<ul>${books}</ul>`;
+                        } else {
+                            result.innerHTML = "No results found.";
+                        }
+                    })
+                    .catch(error => {
+                        result.innerHTML = "An error occurred. Please try again.";
+                        console.error('Error:', error);
+                    });
+            }
+        }
+
+        function addToList(bookKey) {
+            alert(`Book with key ${bookKey} added to list.`);
+        }
+    </script>
+</body>
+</html>

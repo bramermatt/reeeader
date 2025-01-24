@@ -133,13 +133,12 @@ document.addEventListener("DOMContentLoaded", function() {
     <div class="modal-content">
         <span class="close" id="closeSearch">&times;</span>
         <h2>Search Book</h2>
-        <form>
-          <input type="text" id="searchInput" placeholder="Search for a book..." required>
+    <input type="text" id="searchInput" placeholder="Search...">
 
-        </form>
-          <div class="modal-footer">
-          <button type="button" id="searchBtn">Search</button>
-          </div>
+
+    <div id="result"></div>
+        <button type="submit" id="searchBtn" onclick="searchFunction()">Search</button>
+        <div id="searchResults" class="modal-results"></div>
     </div>
 </div>
 
@@ -221,6 +220,7 @@ document.addEventListener("DOMContentLoaded", function() {
   searchIcon.onclick = function(e) {
       e.preventDefault(); // Prevent default behavior
       searchModal.style.display = "block";
+      document.body.classList.add('modal-open');
   }
 
   // When the user clicks the add icon, open the add modal
@@ -232,6 +232,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // When the user clicks on <span> (x), close the modals
   closeSearch.onclick = function() {
       searchModal.style.display = "none";
+      document.body.classList.remove('modal-open');
   }
 
   closeAdd.onclick = function() {
@@ -242,6 +243,7 @@ document.addEventListener("DOMContentLoaded", function() {
   window.onclick = function(event) {
       if (event.target == searchModal) {
           searchModal.style.display = "none";
+          document.body.classList.remove('modal-open');
       } else if (event.target == addModal) {
           addModal.style.display = "none";
           postModal.style.display = "none";
@@ -327,5 +329,51 @@ function toggleNav() {
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   }
 
+document.addEventListener("DOMContentLoaded", function() {
+  // Get modal elements
+  var searchModal = document.getElementById('searchModal');
+  var searchIcon = document.getElementById('searchIcon');
+  var closeSearch = document.getElementById('closeSearch');
 
+  // Open the modal when the search icon is clicked
+  searchIcon.addEventListener('click', function() {
+    searchModal.style.display = 'block';
+    document.body.classList.add('modal-open');
+    document.getElementById('searchInput').focus(); // Focus on the search input
+  });
 
+  // Close the modal when the close button is clicked
+  closeSearch.addEventListener('click', function() {
+    searchModal.style.display = 'none';
+    document.body.classList.remove('modal-open');
+  });
+
+  // Close the modal when clicking outside of it
+  window.addEventListener('click', function(event) {
+    if (event.target === searchModal) {
+      searchModal.style.display = 'none';
+      document.body.classList.remove('modal-open');
+    }
+  });
+});
+
+// Add the search modal HTML structure
+document.body.insertAdjacentHTML('beforeend', `
+  <!-- Search Modal -->
+  <div id="searchModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeSearch">&times;</span>
+      <h2>Search</h2>
+      <input type="text" id="searchInput" placeholder="Search Book, Author,...">
+      <button type="button" id="searchBtn">Search</button>
+      <div id="searchResults" class="modal-results"></div>
+    </div>
+  </div>
+`);
+
+// Focus on the search input when the modal is opened
+searchIcon.addEventListener('click', function() {
+  searchModal.style.display = 'block';
+  document.body.classList.add('modal-open');
+  document.getElementById('searchInput').focus();
+});
