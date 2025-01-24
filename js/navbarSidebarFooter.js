@@ -27,12 +27,14 @@ document.addEventListener("DOMContentLoaded", function() {
         <a href="${basePath}pages/home.html"><i class="fa-solid fa-book-open-reader"></i></a>
         <h1>Reeeader</h1>
         <li><a href="${basePath}pages/home.html">Home</a></li>
+        <li><a href="${basePath}pages/your-books.html">My Books</a></li>
         <li class="dropdown">
           <a href="javascript:void(0)" class="dropdown-toggle">
             <span>Trending</span>
             <i class="fas fa-chevron-down"></i>
           </a>
           <div class="dropdown-content">
+          <a href="${basePath}pages/book-news.html">Book News</a>
             <a href="${basePath}pages/trending-books.html">Trending Books</a>
             <a href="${basePath}pages/trending-authors.html">Trending Authors*</a>
             <a href="${basePath}pages/trending-series.html">Trending Series*</a>
@@ -48,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <a href="${basePath}pages/challenges.html">Coming Soon*</a>
           </div>
         </li>
-        <li class="dropdown">
+        <!-- <li class="dropdown">
           <a href="javascript:void(0)" class="dropdown-toggle">
             <span>Giveaways</span>
             <i class="fas fa-chevron-down"></i>
@@ -56,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
           <div class="dropdown-content">
             <a href="${basePath}pages/giveaways.html">Coming Soon*</a>
           </div>
-        </li>
+        </li> -->
       </ul>
 
 
@@ -110,20 +112,34 @@ document.addEventListener("DOMContentLoaded", function() {
 
   const sidebarHTML = `
     <div id="sideMenu">
+    <h1>Links</h1>
       <ul>
+      
         <li><a href="${basePath}pages/home.html">Home</a></li>
         <li><a href="${basePath}pages/your-stats.html">Stats*</a></li>
         <li><a href="${basePath}pages/challenges.html">Challenges*</a></li>
-        <li><a href="${basePath}pages/giveaways.html">Giveaways*</a></li>
+        <!-- <li><a href="${basePath}pages/giveaways.html">Giveaways*</a></li> -->
         <li><a href="${basePath}pages/your-books.html">Your Books</a></li>
         <li><a href="${basePath}pages/your-lists.html">Your Lists</a></li>
         <li><a href="${basePath}pages/your-profile.html">Your Profile</a></li>
+</ul>
 
+    <h1>Trending</h1>
+        <ul>
+        <li><a href="${basePath}pages/book-news.html">Book News</a></li>
         <li><a href="${basePath}pages/trending-books.html">Trending Books</a></li>
         <li><a href="${basePath}pages/trending-authors.html">Trending Authors*</a></li>
         <li><a href="${basePath}pages/trending-series.html">Trending Series*</a></li>
         <li><a href="${basePath}pages/trending-genres.html">Trending Genres*</a></li>
       </ul>
+
+    <h1>Currently Reading</h1>
+    <ul>
+    <li><a href="${basePath}pages/your-books.html">Update Your Bookmark</a></li>
+  <li><a href="${basePath}pages/your-books.html">Post an Updates</a></li>
+  </ul>
+
+
     </div>
   `;
 
@@ -173,7 +189,7 @@ document.addEventListener("DOMContentLoaded", function() {
           <ul id="iconLinks">
           <li><a href="${basePath}pages/your-stats.html">Stats*</a></li>
           <li><a href="${basePath}pages/challenges.html">Challenges*</a></li>
-          <li><a href="${basePath}pages/giveaways.html">Giveaways*</a></li>
+          <!-- <li><a href="${basePath}pages/giveaways.html">Giveaways*</a></li> -->
           </ul>
 
 
@@ -302,7 +318,7 @@ function toggleNav() {
       body.classList.remove("menu-open");
   } else {
       sideMenu.classList.add("open");
-      sideMenu.style.width = window.innerWidth <= 768 ? "100%" : "220px";
+      sideMenu.style.width = window.innerWidth <= 768 ? "100%" : "320px";
       menuIcon.className = "fa-solid fa-times";
       body.classList.add("menu-open");
   }

@@ -106,9 +106,10 @@ article#currently-reading, article#the-feed, article#news {
     margin: 0 auto;
     max-width: 800px;
     width: 100%;
-    padding: 1em;
+    padding: 0 1em 1em;
+    max-height: max-content;
 
-    border-radius: 0 0 25px 25px;
+    border-radius: 0 0 10px 10px;
 
     /* position: sticky;
     top: 0px;
@@ -137,31 +138,47 @@ article#currently-reading, article#the-feed, article#news {
 
         .currently-reading-info {
 
-            h1,h2,h3 {
+            h2,h3,h4 {
                 margin: 0;
             }
 
-            h3 {
+            h4 {
                 font-size: small;
             }
 
-            h1 {
+            h2 {
                 font-size: x-large;
             }
 
-            h2 {
+            h3 {
                 font-size: small;
                 margin-bottom: 1vh;
             }
         }
 
+        
 
 
     }
+
+    .currently-reading-book {
+        padding: 1em;
+        max-width: 85%;
+        margin: auto;
+        /* margin-left: 10px; */
+        border-radius: 10px;
+    }
+
 
     .currently-reading-bonus {
         margin-top: 2vh;
     }
+}
+
+#news-feed {
+    padding: 0 1em;
+
+    margin-top: 1vh;
 }
 
 
@@ -219,11 +236,17 @@ article#currently-reading, article#the-feed, article#news {
         padding: 0;
         /* padding: 12px; */
         /* border-radius: 10px; */
+
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2vw;
     
-        display: flex;
+        /* display: flex;
         flex-wrap: wrap;
         gap: 1vw;
-        justify-content: space-between;
+        justify-content: space-between; */
+
+
         /* align-items: center; */
         /* max-width: max-content; */
         /* max-width: 200px; */
@@ -321,12 +344,12 @@ article#currently-reading, article#the-feed, article#news {
         font-size: medium;
     }
 
-    .book-cover {
+    /* .book-cover {
         max-height: 40vh;
         position: sticky;
         top: 10vh;
         z-index: 1;
-    }
+    } */
 
     .book-info {
 
@@ -360,7 +383,7 @@ body.modal-open {
 
 .modal-content {
     background-color: #fefefe;
-    padding: 20px;
+    padding: 12px;
     border: 1px solid #888;
     width: 80%;
     max-width: 500px;
@@ -442,39 +465,63 @@ body.modal-open {
     /* max-height: max-content; */
     width: 0;
     position: fixed;
-    z-index: 1;
+    z-index: 10;
     top: 0;
     right: 0;
     background-color: rgb(44, 24, 11);
     box-shadow: 0px 0px 3px rgb(44, 24, 11);
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 7vh;
+    padding-top: 8vh;
     border-radius: 0 0 0 10px;
+
+    h1 {
+        /* margin-bottom: 0; */
+        padding: 0 10px;
+        font-size: large;
+        margin-top: 3vh;
+        color: white;
+
+        }
 
 
     ul {
         padding: 0;
         list-style-type: none;
+
+        display: flex;
+        /* gap: 1vw; */
+        flex-wrap: wrap;
+
+        /* margin-bottom: 10px; */
+        margin-top: 5px;
+
+        li {
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    a {
+        padding: 10px;
+        text-decoration: none;
+        font-size: 18px;
+        /* color: #818181; */
+    
+        color: white;
+        display: block;
+        transition: 0.3s;
+    }
+    
+    a:hover {
+        color: #f1f1f1;
+        opacity: 50%;
     }
 }
 
 
 
-#sideMenu a {
-    padding: 16px;
-    text-decoration: none;
-    font-size: 18px;
-    /* color: #818181; */
 
-    color: white;
-    display: block;
-    transition: 0.3s;
-}
-#sideMenu a:hover {
-    color: #f1f1f1;
-    opacity: 50%;
-}
 
 /* Position the dropdown content */
 #menuProfile .dropdown {
@@ -617,6 +664,7 @@ header {
     }
 }
 
+
 .grid-four, #book-list {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -640,11 +688,30 @@ header {
     /* padding: 12px; */
     gap: 2vw;
     /* gap: 1vh; */
+
+        h1 {
+            position: sticky;
+            top: 7.5vh;
+            z-index: 1;
+            padding: 10px;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0px 0px 2px rgb(44, 24, 11);
+            background-color: white;
+        }
+
+/* 
+        article {
+            h1 {
+                position: relative;
+                top: 0;
+            }
+        } */
+
 }
 
 #grid-topic {
     position: sticky;
-    top: 7vh;
+    top: 7.5vh;
     z-index: 1;
     /* padding-inline: 15px; */
     padding: .6em;
@@ -653,7 +720,12 @@ header {
 
     h1 {
         margin-top: 0;
-    }
+        font-size: x-large;
+        line-height: 1.2;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+       }
 
     p {
         margin-bottom: 0;
@@ -841,7 +913,7 @@ footer {
     .modal-content {
         background-color: #fff;
         margin: 5% auto;
-        padding: 20px;
+        padding: 12px;
         border-radius: 8px;
         width: 90%;
         max-width: 500px;
@@ -1125,6 +1197,56 @@ footer {
   }
 
 
+
+
+  .book-news-article {
+    
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 1em;
+    box-shadow: 0px 0px 2px rgb(100, 55, 25) ;
+    border-radius: 10px;
+    margin-bottom: 2vh;
+
+    h1 {
+        margin-top: 0;
+        font-size: large;
+        line-height: 1.2;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    img {
+        max-height: 20vh;
+        max-width: 100%;
+        border-radius: 10px;
+        margin-bottom: 1vh;
+        box-shadow: 2px 2px 2px rgba(100, 55, 25, 0.5);
+    }
+
+    h2 {
+        margin: 0;
+        margin-bottom: 1vh;
+        font-size: large;
+        text-transform: uppercase;
+    }
+
+    p {
+        margin: 0;
+        margin-bottom: 1vh;
+    }
+
+    a:link, a:visited {
+        color: var(--text);
+        text-decoration: none;
+    
+        border-bottom: thin dashed;
+    
+  }
+}
+
+
 @media screen and (prefers-color-scheme: light) {
     
 
@@ -1147,7 +1269,7 @@ footer {
         }
     }
 
-    article#currently-reading {
+    article .currently-reading-book {
         box-shadow: 0px 0px 2px rgb(44, 24, 11);
         background-color: white;
     }
@@ -1370,7 +1492,7 @@ footer {
         }
     }
 
-    article#currently-reading, article#the-feed, article#news {
+    article .currently-reading-book, article#the-feed, article#news {
         box-shadow: 0px 0px 4px rgb(44, 24, 11);
         background: rgb(92, 50, 23);
 
@@ -1422,35 +1544,27 @@ footer {
         padding-inline: 25px;
     }
 
-    /* input {
-        background-color: rgba(44, 24, 11, 0.863);
-    } */
+    .grid-three-columns, #news-feed {
+            h1 {
+                box-shadow: 0px 4px 4px rgb(44, 24, 11);
+                background: rgb(92, 50, 23);
+            }
+    
+            .book-news-article {
+                box-shadow: 0px 0px 4px rgb(44, 24, 11);
+            }
+    /* 
+            article {
+                h1 {
+                    position: relative;
+                    top: 0;
+                }
+            } */
+    
+    }
 
-
-    /* ::-webkit-scrollbar-thumb {
-        border-radius: 10px;
-      }
     
-      ::-webkit-scrollbar-thumb:hover {
-        background: rgb(44, 24, 11);
-        border-radius: 10px;
-      }
     
-      * {
-        scrollbar-color: rgb(44, 24, 11) rgb(92, 50, 23);
-        scrollbar-width: thin;
-      }
-    
-    ::-webkit-scrollbar {
-        border-radius: 10px;
-        width: 10px;
-        
-      }
-    
-    ::-webkit-scrollbar-track {
-        background: rgb(92, 50, 23);
-    
-      } */
 
         .modal {
                 
@@ -1573,8 +1687,23 @@ footer {
 
 }
 
+@media screen and (max-width: 1000px) and (prefers-color-scheme: dark) {
 
-@media screen and (max-width: 900px) {
+    article#the-feed, article#news {
+     box-shadow: none;
+    }
+
+    /* article#currently-reading {
+        .currently-reading-content {
+            box-shadow: 2px 2px 2px black;
+        }
+    } */
+    
+    
+}
+
+
+@media screen and (max-width: 880px) {
     nav {
 
         position: fixed;
@@ -1610,15 +1739,17 @@ footer {
         flex-direction: column;
         gap: 2vh;
 
-        .book-cover {
+        /* .book-cover {
             position: relative;
             top: 0 !important;
             max-height: 100% !important;
-        }
+        } */
     }
 
     footer {
         padding-bottom: 12vh;
+        border-radius: 10px 10px 0px 0px !important;
+        margin-top: 40vh;
     }
 
 
@@ -1628,6 +1759,8 @@ footer {
 
     .modal-content {
         position: relative;
+        margin: auto !important;
+        width: 100% !important;
         /* top: 30vh; */
         /* bottom: 10vh; */
         /* left: 5vw; */
@@ -1646,12 +1779,21 @@ footer {
         padding-top: 0vh; 
         padding-bottom: 12vh;
     }
-    #sideMenu a {
-        font-size: 24px;
+
+
+   
+
+
+    #sideMenu {
+
+        h1 {
+            font-size: large;
+            margin-top: 4vh;
+        }
+
     }
 
 
-    
 
     #menuProfile .dropdown-content {
         right: 8vw; 
@@ -1692,12 +1834,19 @@ footer {
 
     .grid-three-columns {
         grid-template-columns: 1fr;
-        padding: 0 12px;
     }
 
     article#currently-reading, article#the-feed, article#news {
-        border-radius: 25px;
-        margin-top: 10px;
+        /* border-radius: 25px; */
+        /* margin-top: 10px; */
+        max-width: max-content;
+    }
+
+    .grid-three-columns {
+        h1 {
+            top: 0;
+            width: 100%
+        }
     }
 
     #grid-topic {
@@ -1713,6 +1862,5 @@ footer {
         box-shadow: none !important;
         margin-inline: 1em;
     }
-
 
 }

@@ -1,4 +1,17 @@
 document.addEventListener("DOMContentLoaded", function() {
+    const bookDetailsContainer = document.createElement('div');
+    /* bookDetailsContainer.id = 'popluarBooksNYT';
+    bookDetailsContainer.className = 'grid-slider';
+    bookDetailsContainer.innerHTML = `
+        <div id="grid-topic">
+            <h1 id="bookTitle">Book Details</h1>
+        </div>
+        <div id="bookDetails"></div>
+    `;
+    */
+
+    document.body.appendChild(bookDetailsContainer);
+
     const bookDetailsDiv = document.getElementById('bookDetails');
 
     // Extract the book key from the URL
@@ -16,17 +29,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
     async function fetchBookDetails(key) {
         bookDetailsDiv.innerHTML = "<p>Loading...</p>";
-
+    
         try {
             const openLibraryResponse = await fetch(`https://openlibrary.org${key}.json`);
             if (!openLibraryResponse.ok) throw new Error("Failed to fetch book details from OpenLibrary");
-
+    
             const openLibraryBook = await openLibraryResponse.json();
+            console.log(openLibraryBook); // Log the book details to inspect the structure
             displayBookDetails(openLibraryBook);
-
+    
             const googleBooksResponse = await fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${openLibraryBook.isbn_13 || openLibraryBook.isbn_10}`);
             if (!googleBooksResponse.ok) throw new Error("Failed to fetch book details from Google Books");
-
+    
             const googleBooksData = await googleBooksResponse.json();
             if (googleBooksData.totalItems > 0) {
                 const googleBook = googleBooksData.items[0].volumeInfo;
@@ -40,15 +54,22 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function displayBookDetails(book) {
         const coverUrl = book.covers ? `https://covers.openlibrary.org/b/id/${book.covers[0]}-L.jpg` : 'https://via.placeholder.com/128x193.png?text=No+Cover';
-        const author = book.authors ? book.authors.map(author => `<a href="https://openlibrary.org${author.key}" target="_blank">${author.name}</a>`).join(', ') : 'Unknown author';
+        const author = book.authors ? book.authors.map(author => {
+            if (typeof author === 'string') {
+                return author; // Handle case where author is a string
+            } else {
+                return `<a href="https://openlibrary.org${author.key}" target="_blank">${author.name}</a>`;
+            }
+        }).join(', ') : 'Unknown author';
         const publishDate = book.first_publish_date || 'Unknown year';
         const description = book.description ? (typeof book.description === 'string' ? book.description : book.description.value) : 'No description available';
-
+    
         document.title = book.title; // Update the document's title
-
+        document.getElementById('bookTitle').textContent = book.title; // Update the h1 element
+    
         const amazonLink = `https://www.amazon.com/s?k=${encodeURIComponent(book.title)}`;
         const barnesAndNobleLink = `https://www.barnesandnoble.com/s/${encodeURIComponent(book.title)}`;
-
+    
         bookDetailsDiv.innerHTML = `
             <div class="book-detail">
             <div class="book-cover">
