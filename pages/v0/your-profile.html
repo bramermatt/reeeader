@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="v0-style.css">
+</head>
+<body>
+    
+
+    <main>
+
+<div class="column">
+
+    
+    <div id="block">
+    <div id="block-title">
+        <h2>Currently Reading</h2>
+    </div>
+
+    <div id="currently-reading">
+        <div id="book">
+            <div id="cover">
+                <img src="placeholder-img.png" alt="">
+            </div>
+
+            <div id="book-info">
+                <a href="">genre tag</a>
+                <h3><a href="">book series</a></h3>
+                <h1>book title</h1>
+                <h2><a href="">book author</a></h2>
+                <p>book description</p>
+            </div>
+        </div>
+
+        <div id="currently-reading-buttons">
+            <button id="update-bookmark">update bookmark</button>
+            <button id="add-margin-note">add margin note</button>
+        </div>
+    </div>
+    </div>
+
+</div>
+
+
+<div class="column">
+
+    <div id="block">
+        <div id="block-title">
+            <h2>Feed</h2>
+        </div>
+
+    <div id="feed">
+        <div id="feed-entries"></div> 
+        <!-- Feed updates will be inserted here -->
+    </div>
+    
+</div>
+
+
+
+
+</main>
+
+
+<script>
+    // Get the buttons and the feed container
+const bookmarkButton = document.getElementById('update-bookmark');
+const marginNoteButton = document.getElementById('add-margin-note');
+const feedContainer = document.getElementById('feed-entries');
+
+// Function to add an entry to the feed
+function addToFeed(message) {
+    // Create a new div for the feed entry
+    const feedEntry = document.createElement('div');
+    feedEntry.classList.add('feed-entry');
+    feedEntry.textContent = message;
+
+    // Add the new feed entry to the top of the feed container
+    feedContainer.prepend(feedEntry); // prepend adds to the top
+}
+
+// Event listeners for the buttons
+bookmarkButton.addEventListener('click', () => {
+    // Logic for updating bookmark goes here
+    // Add a message to the feed
+    addToFeed('You updated the bookmark for "book title".');
+});
+
+marginNoteButton.addEventListener('click', () => {
+    // Logic for adding margin note goes here
+    // Add a message to the feed
+    addToFeed('You added a margin note to "book title".');
+});
+
+</script>
+    
+</body>
+</html>
