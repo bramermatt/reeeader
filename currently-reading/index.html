@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- <meta name="color-scheme" content="light dark"/>
+    <link rel="shortcut icon" type="image/x-icon" rel="icon" href="img/fav/reeeader-fav-lightmode.svg" media="(prefers-color-scheme: light)">
+    <link rel="shortcut icon" type="image/x-icon" rel="icon" href="img/fav/reeeader-fav-darkmode.svg" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather"> -->
+    
+  <title>Currently Reading</title>
+  <link rel="stylesheet" href="css/styles.css">
+
+</head>
+<body>
+
+  <div class="container">
+  <div>
+    <h1>Currently Reading</h1>
+    <div class="book-stuff">
+      <h2 id="book-title">Book Title</h2>
+      <p id="book-author">Book Author</p>
+      <img id="book-cover" src="" alt="Book Cover">
+      <p id="book-thoughts">Thoughts on the book...</p>
+      <p id="page-progress">Page Progress</p>
+      <a id="book-link" href="#">Buy the Book</a>
+    </div>
+
+
+
+<div id="login-form" style="display: none;">
+  <input type="text" id="email" placeholder="Email">
+  <input type="password" id="password" placeholder="Password">
+  
+  <button onclick="login()">Login</button>
+  <button onclick="register()">Register</button>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script type="module" src="js/app.js"></script>
+    
+</body>
+</html>
